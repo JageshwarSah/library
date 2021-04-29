@@ -16,7 +16,6 @@ const host = process.env.HOST || '127.0.0.1'
 
 // Database connection
 const databaseUrl = process.env.DATABASE_URL.replace('<password>', process.env.DATABASE_PASSWORD)
-console.log(databaseUrl)
 
 mongoose.connect(databaseUrl, {useCreateIndex: true, useUnifiedTopology:true, useNewUrlParser: true})
 	.then(() => {

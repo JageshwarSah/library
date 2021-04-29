@@ -4,9 +4,10 @@ const bcrypt = require('bcrypt')
 const userSchema = mongoose.Schema({
 	username: {
 		type: String,
-		unique: true,
+		unique: [true, 'username is not available, try another'],
 		minLength: [4, 'username must have more than 4 chars'],
-		maxLength: [24, 'username must have less than 24 chars']
+		maxLength: [24, 'username must have less than 24 chars'],
+		required: true
 	},
 	password: {
 		type: String,
@@ -15,7 +16,7 @@ const userSchema = mongoose.Schema({
 		maxLength: [128, 'username must have less than 128 chars']
 	},
 	role: {
-		type: String,	
+		type: String,
 		enum: ['admin', 'user'],
 		default :  'user'
 	},
@@ -35,12 +36,15 @@ const userSchema = mongoose.Schema({
 	},
 	active: {
 		type: Boolean,
-		default: false
+		default: true
 	},
 	passwordModifiedAt: {
 		type: Date
 	},
 })
+
+//userSchema.index({email: 1}, {unique: true})
+//userSchema.index({username: 1}, {unique: true})
 
 userSchema.pre('save', async function(next) {
 	this.password = await bcrypt.hash(this.password, 12)
