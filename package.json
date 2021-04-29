@@ -1,0 +1,14 @@
+{
+  "name": "library",
+  "version": "1.0.0",
+  "description": "A Library Management Web API",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.js"
+  },
+  "keywords": [
+    "library"
+  ],
+  "author": "Jageshwar Sah",
+  "license": "ISC"
+}
