@@ -1,0 +1,92 @@
+[
+  {
+    "role": "admin",
+    "active": true,
+    "username": "tilda",
+    "email": "tilda@example.com",
+    "name": "Tilda Hunter",
+    "password": "password",
+    "profileImage": "default.png"
+  },
+  {
+    "role": "admin",
+    "active": true,
+    "username": "herbert",
+    "email": "herbert@example.com",
+    "name": "Herbert Heath",
+    "password": "password",
+    "profileImage": "default.png"
+  },
+  {
+    "role": "user",
+    "active": true,
+    "username": "angela",
+    "email": "anglea@example.com",
+    "name": "Angela Moore",
+    "password": "password",
+    "profileImage": "default.png"
+  },
+  {
+    "role": "user",
+    "active": true,
+    "username": "happy",
+    "email": "happy@example.com",
+    "name": "Happy Morgan",
+    "password": "password",
+    "profileImage": "default.png"
+  },
+  {
+    "role": "user",
+    "active": true,
+    "username": "henry",
+    "email": "henry@example.com",
+    "name": "Henry Allen",
+    "password": "password",
+    "profileImage": "default.png"
+  },
+  {
+    "role": "user",
+    "active": true,
+    "username": "stone",
+    "email": "stone@example.com",
+    "name": "Cliff Stone",
+    "password": "password",
+    "profileImage": "default.png"
+  },
+  {
+    "role": "user",
+    "active": true,
+    "username": "alice",
+    "email": "alice@example.com",
+    "name": "Alice Cobbett",
+    "password": "password",
+    "profileImage": "default.png"
+  },
+  {
+    "role": "user",
+    "active": true,
+    "username": "ivory",
+    "email": "ivory@example.com",
+    "name": "Ivory Poe",
+    "password": "password",
+    "profileImage": "default.png"
+  },
+  {
+    "role": "user",
+    "active": true,
+    "username": "colon",
+    "email": "colon@example.com",
+    "name": "Una Colon",
+    "password": "password",
+    "profileImage": "default.png"
+  },
+  {
+    "role": "user",
+    "active": true,
+    "username": "felicia",
+    "email": "felicia@example.com",
+    "name": "Felicia Cook",
+    "password": "password",
+    "profileImage": "default.png"
+  }
+]

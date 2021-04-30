@@ -1,3 +1,4 @@
+const { promisify } = require('util')
 const jwt = require('jsonwebtoken')
 const User = require('../models/user')
 const apiError = require('../helpers/apiError')
@@ -31,3 +32,26 @@ exports.login =  catchAsync (async (req, res, next) => {
 		}
 	})
 })
+
+exports.protect = catchAsync( async (req, res, next) => {
+	// Steps :
+	// 1 - Check for access token
+	// 2 - Verify access token
+	// 3 - Find user associated with the token
+	// 4 - Check if user has changed their password after issuing token
+	// 5 - Attach user to request object
+	// 6 - Grant Access
+
+	let token
+	if(!req.headers.authorization || !req.headers.authorization.startsWith('Bearer')) {
+		return next(new Error ('You are not logged in, please login', 401))
+	}
+	token = req.headers.authorization.split(' ')[1]
+	const decoded = await promisify(jwt.verify)(token, process.env.JWT_PRIVATE_KEY)
+
+	const currentUser = await User.findById(decoded.id)
+
+	req.user = currentUser
+	next()
+})
+

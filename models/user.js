@@ -39,7 +39,8 @@ const userSchema = mongoose.Schema({
 		default: true
 	},
 	passwordModifiedAt: {
-		type: Date
+		type: Date,
+		default: Date.now()
 	},
 })
 
@@ -47,11 +48,16 @@ const userSchema = mongoose.Schema({
 //userSchema.index({username: 1}, {unique: true})
 
 userSchema.pre('save', async function(next) {
-	this.password = await bcrypt.hash(this.password, 12)
+	// Hash password on creation and every modification
+	if(this.isModified('passowrd') || this.isNew ) {
+		this.password = await bcrypt.hash(this.password, 12)
+	}
 	next()
 })
 
 userSchema.methods.validPassword = async function(password, hashedPassword) {
 	return await bcrypt.compare(password, hashedPassword)
 }
+
+userSchema.methods.passwor
 module.exports = mongoose.model('User', userSchema)

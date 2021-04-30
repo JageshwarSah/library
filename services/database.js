@@ -29,7 +29,7 @@ module.exports = {
 			data: {
 				doc
 			}
-		}) 
+		})
 	}),
 	updateOne :  Model => catchAsync (async(req, res, next) => {
 		const doc = await Model.findByIdAndUpdate(req.params.id)
@@ -38,11 +38,11 @@ module.exports = {
 			data: {
 				doc
 			}
-		}) 
+		})
 	}),
-	deleteOne : Model => catchAsync (async (req, res, next) => {	
+	deleteOne : Model => catchAsync (async (req, res, next) => {
 		await Model.findByIdAndDelete(req.params.id)
-		res,status(204).json({
+		res.status(204).json({
 			status: 'ok',
 			data : null
 		})
