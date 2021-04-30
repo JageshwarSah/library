@@ -4,6 +4,7 @@ const User = require('../models/user')
 const apiError = require('../helpers/apiError')
 const { catchAsync } = require('../helpers/catchAsync')
 
+// Authentication
 exports.login =  catchAsync (async (req, res, next) => {
 	const { username, password } = { ...req.body }
 	// Check if login info is provided
@@ -33,6 +34,7 @@ exports.login =  catchAsync (async (req, res, next) => {
 	})
 })
 
+// Authorization
 exports.protect = catchAsync( async (req, res, next) => {
 	// Steps :
 	// 1 - Check for access token
@@ -55,3 +57,12 @@ exports.protect = catchAsync( async (req, res, next) => {
 	next()
 })
 
+// Restricted Authorization
+exports.restrictTo = ( ...roles)  => (req, res, next) => {
+	roles = [ ... roles ]
+	if(!roles.includes(req.user.role)) {
+		return next(new Error('You are not authorized', 403))
+	}
+
+	next();
+}
